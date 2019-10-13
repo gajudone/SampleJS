@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="http://www.clker.com/cliparts/T/7/q/7/B/B/favicon-md.png">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    body{ box-sizing: border-box;}
+    html {
+  scroll-behavior: smooth;
+}
+  .first { height:100px; width: 100px;background: red; border-radius: 50%;z-index: 99999 !important;position:fixed;top: 20px; left:20px; cursor: pointer;}
+  .second { height: 100%; width: 0%;background: black;position: fixed;left:0;top: 0; transition: 0.5s; overflow: hidden; }
+  .second.active { height: 100%; width: 20%;background: black;position: fixed;left:0;top: 0; z-index: 999 !important; }
+  ul{ list-style-type: none; margin-top: 70%;} a { text-decoration: none; color: white; font-size: 20px;letter-spacing: 5px; text-transform: uppercase;} ul li { margin-top: 20px;}
+  a:hover { text-decoration: none; color: red;}
+  .first h3 { text-align: center; margin-top: 35px;color:rgb(220, 231, 231); text-shadow: 2px 3px #1a1818; }
+  .second p { font-size: 30px; color: white; position: absolute; top: 10px; right: 20px;cursor: pointer }
+  #home, #about, #services, #contact { }
+  .third { height:50px; width: 50px;background: rgb(238, 65, 22);border-radius:50%;position: fixed;right:20px;bottom:20px;display:none; cursor: pointer; }
+  .third span{ font-size: 16px; color: white;line-height: 50px;margin-left: 10px; }
+  .mySlides1  {display: none;transition: 1s;  animation-name: fader 5s;}
+    @keyframes fader {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+img {vertical-align: middle; width:100%; height: 100%; animation-name: fader;
+    animation-duration: 1s;}
+
+/* Slideshow container */
+
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a grey background color */
+.prev:hover, .next:hover {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.container {
+  max-width: 960px;
+  margin: auto;
+  padding: 0 30px;
+}
+
+#showcase {
+  height: 100px;
+}
+
+#showcase h1 {
+  font-size: 50px;
+  line-height: 1.3;
+  position: relative;
+  animation: heading;
+  animation-duration: 5s;
+  animation-fill-mode:forwards;
+  animation-iteration-count: infinite;
+  color: rgb(28, 25, 70)
+}
+
+@keyframes heading {
+  0%   {top: -50px;}
+  100% {top: 20px;}
+}
+
+#content {
+  position: relative;
+  animation-name: content;
+  animation-duration: 5s;
+  animation-fill-mode:forwards;
+  animation-iteration-count: infinite;
+  text-align: justify;
+  color: #f70e2b;
+    font-size: 17px;
+}
+
+@keyframes content {
+  0%   {left: -1000px;}
+  100% {left: 0;}
+}
+
+.btn{
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border: #fff 1px solid;
+  margin-top:40px;
+  opacity: 0;
+  animation-name: btn;
+  animation-duration: 5s ;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  transition-property: transform;
+  transition-duration: 1s;
+  background: rgb(28, 25, 70);
+}
+
+.btn:hover {
+  transform: rotateY(360deg);
+}
+
+@keyframes btn {
+  0%   {opacity:0}
+  100% {opacity: 1}
+}
+
+/*To do list*/
+#about ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the list items */
+#about ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+  
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+#about ul li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+/* Darker background-color on hover */
+#about ul li:hover {
+  background: #ddd;
+}
+
+/* When clicked on, add a background color and strike out text */
+ul li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
+}
+
+/* Add a "checked" mark when clicked on */
+#about ul li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+/* Style the close button */
+#about  .close {
+  position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px 16px 12px 16px;
+    background: #54b1a8;
+    opacity: 1;
+}
+
+#about .close:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Style the header */
+#about .header {
+  background-color: #ee453c;
+    padding: 10px 10px;
+    color: white;
+    text-align: center;
+}
+
+/* Clear floats after the header */
+#about .header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the input */
+#about input {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+  color: black;
+}
+
+/* Style the "Add" button */
+#about .addBtn {
+  
+    padding: 10px;
+    width: 25%;
+    background: #48a94b;
+    color: #ffffff;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 0;
+}
+
+#about .addBtn:hover {
+  background-color: #bbb;
+}
+
+/* services */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 100px;
+  width: 80%; /* Full width */
+  height: auto; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  -webkit-animation-name: fadeIn; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s;
+  margin-left: 60px;
+}
+
+/* Modal Content */
+.modal-content {
+  position: fixed;
+  bottom: 0; top: 5px;
+  background-color: #fefefe;
+  width: 80%; height: 100%;
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slideIn;
+  animation-duration: 0.4s; border-radius: 0px; border: none;
+}
+
+/* The Close Button */
+.closeModal {
+  color: rgb(238, 9, 9);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.closeModal:hover,
+.closeModal:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  color: white; border:none; 
+}
+
+.modal-body {padding: 2px 16px; height: 80%;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+  from {bottom: -300px; opacity: 0} 
+  to {bottom: 0; opacity: 1}
+}
+
+@keyframes slideIn {
+  from {bottom: -300px; opacity: 0}
+  to {bottom: 0; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+  </style>
+</head>
+<body>
+<div  id="xyz" class="first">
+  <h3 >MENU</h3>
+</div>
+<div id="pqr" class="second active"> 
+  <ul>
+    <li><a href="#home">Animation</a></li>
+    <li><a href="#about">To Do List</a></li>
+    <li><a href="#services">Videos</a></li>
+    <li><a href="#contact">HTml canvas</a></li>
+  </ul>
+  <p id="pqrs">X</p>
+</div>
+<div class="third" id="goTop"><span>TOP</span></div>
+<div class="slideshow-container">
+  <div class="mySlides1">
+    <img src="https://i.ytimg.com/vi/YKyjRgDR92w/maxresdefault.jpg" style="width:100%;transition: 1s;">
+  </div>
+
+  <div class="mySlides1">
+    <img src="http://btiestate.com/wp-content/uploads/2018/06/adobe-premiere-pro-slideshow-templates-free-new-design-schon-after-effects-vorlagen-tutorial-ideen-entry-level-resume.png" style="width:100%">
+  </div>
+
+  <div class="mySlides1">
+    <img src="https://i.ytimg.com/vi/OT3ux6yst1A/maxresdefault.jpg" style="width:100%">
+  </div>
+
+  <a class="prev" onclick="showSlidesPrev()">&#10094;</a>
+  <a class="next" onclick="showSlidesNext()">&#10095;</a>
+</div>
+  <!-- <div>
+    <img src="https://cdn.shopify.com/s/files/1/0065/4917/6438/products/exhausted-collection-devon-005_1024x1024@2x.jpg?v=1549164431" alt="computer" width=100% height=auto>
+  </div> -->
+<div id="home" style="height: 1000px;background:rgb(211, 148, 105)">
+  <header id="showcase">
+    <h1 style="margin-left: 215px;">Animation</h1>
+  </header>
+  <div id="content" class="container">
+    Mollitia praesentium soluta, perspiciatis enim repudiandae doloribus quis. Eaque porro vitae, quaerat dolor nihil eveniet illum impedit libero sit, tempore ab ugiat amet quam odio repellat dolore mollitia praesentium soluta, perspiciatis enim repudiandae doloribus quis. Eaque porro vitae, quaerat dolor nihil eveniet illum impedit libero sit, tempore ab ugiat amet quam odio repellat dolore mollitia praesentium soluta, perspiciatis enim repudiandae doloribus quis. Eaque porro vitae, quaerat dolor nihil eveniet illum impedit libero sit, tempore ab ugiat amet quam odio repellat dolore mollitia praesentium soluta, perspiciatis enim repudiandae doloribus quis. Eaque porro vitae, quaerat dolor nihil eveniet illum impedit libero sit, tempore ab. mollitia praesentium soluta, perspiciatis enim repudiandae doloribus quis. Eaque porro vitae, quaerat dolor nihil eveniet illum impedit libero sit, tempore ab ugiat amet quam odio repellat dolore mollitia praesentium soluta, perspiciatis enim repudiandae doloribus quis. Eaque porro vitae, quaerat dolor nihil eveniet illum impedit libero sit, tempore ab ugiat amet quam odio repellat dolore mollitia praesentium soluta, perspiciatis enim repudiandae doloribus quis. Eaque porro vitae, quaerat dolor nihil eveniet illum impedit libero sit, tempore ab ugiat amet quam odio repellat dolore mollitia praesentium soluta, perspiciatis enim repudiandae doloribus quis. Eaque porro vitae, quaerat dolor nihil eveniet illum impedit libero sit, tempore psum dolor sit amet consectetur adipisicing elit. Delectus iusto voluptatibus illum a impedit at fuga aliquam, in fugiat! Iste tempora similique sint, fugiat amet quam odio repellat dolore mollitia praesentium soluta, perspiciatis enim repudiandae doloribus quis. Eaque porro vitae.
+  </div>
+  <a href="#" class="btn" style="margin-left: 215px;">Mouseover</a>
+</div>
+<div id="about" style="height: 100%; background:rgb(84, 84, 177); padding: 10px; ">
+  <div style="width: 60%;margin:auto; ">
+  <h2 style="margin:5px;color: white;">Add and Delete items from the list</h2>
+  <div id="myDIV" class="header">
+    <input type="text" id="myInput" placeholder="Title...">
+    <span onclick="newElement()" class="addBtn">Add</span>
+  </div>
+  <ul id="myUL">
+    <li>ABC</li>
+    <li>ABCD</li>
+    <li>XYZ</li>
+    <li>ABC</li>
+    <li>ABCD</li>
+    <li>XYZ</li>
+  </ul>
+</div>
+</div>
+<div id="services" style="height: 700px;background:rgb(98, 172, 91);padding: 5px 0px;">
+  <div style="width: 80%; margin: auto;">
+  <h2>Videos</h2>
+   <a style="float: left;margin: 10px; border: 3px solid rgb(240, 5, 5); padding: 5px;" href="https://www.youtube.com/embed/US8ePkxYI3E" class="myBtn" > go to video
+    <div>
+      <img  style="width: 300px; height: 200px;padding: 10px;" src="https://cdn.vox-cdn.com/thumbor/1OsBXAqp6pdcMWCFfFAULJldOag=/0x0:2040x1360/1200x800/filters:focal(857x517:1183x843)/cdn.vox-cdn.com/uploads/chorus_image/image/64037059/acastro_180322_1777_youtube_0001.0.jpg" width=200  height=150>
+    </div>
+  </a>
+  <a style="float: left;margin: 10px; border: 3px solid rgb(240, 5, 5); padding: 5px;" href="https://www.youtube.com/embed/kDyJN7qQETA" class="myBtn" > go to video
+    <div>
+      <img  style="width: 300px; height: 200px;padding: 10px;" src="https://opensource.com/sites/default/files/styles/image-full-size/public/lead-images/OpenVideo.png?itok=jec9ibU5" width=200  height=150>
+    </div>
+  </a>
+  <a style="float: left;margin: 10px; border: 3px solid rgb(240, 5, 5); padding: 5px;" href="https://www.youtube.com/embed/Fkd9TWUtFm0" class="myBtn" > go to video
+    <div>
+      <img  style="width: 300px; height: 200px;padding: 10px;" src="https://themeleopard.com/wp-content/uploads/2019/01/Best-Practices-for-Beginners-When-Editing-Videos.jpg" width=200  height=150>
+    </div>
+  </a>
+  <a style="float: left;margin: 10px; border: 3px solid rgb(240, 5, 5); padding: 5px;" href="https://www.youtube.com/embed/vWLcyFtni6U" class="myBtn" > go to video
+    <div>
+      <img  style="width: 300px; height: 200px;padding: 10px;" src="https://webcdn-adespressoinc.netdna-ssl.com/wp-content/uploads/2018/08/best-video-edit-apps-2018.jpg" width=200  height=150>
+    </div>
+  </a>
+  <a style="float: left;margin: 10px; border: 3px solid rgb(240, 5, 5); padding: 5px;" href="https://www.youtube.com/embed/kexuG-YcQFA" class="myBtn" > go to video
+    <div>
+      <img  style="width: 300px; height: 200px;padding: 10px;" src="https://www.videvo.net/videvo_files/images/preview_Countdown%20Timer.jpg" width=200  height=150>
+    </div>
+  </a>
+  <a style="float: left;margin: 10px; border: 3px solid rgb(240, 5, 5); padding: 5px;" href="https://www.youtube.com/embed/eL1X8urHJmA" class="myBtn" > go to video
+    <div>
+      <img  style="width: 300px; height: 200px;padding: 10px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXU5BHslMDuxlvlwkVzm8pcOL3Oow8MiEbh0fjn47vKtl5bAh3vw" width=200  height=150>
+    </div>
+  </a>
+  <!-- The Modal -->
+   <div id="myModal" class="modal">
+  
+    <!-- Modal content -->
+     <div class="modal-content">
+      <div class="modal-header">
+        <span class="closeModal">&times;</span>
+      </div>
+      <div class="modal-body">
+        
+  <iframe  src="" id='frame' style="width: 100%; height:110%" allowfullscreen>
+  </iframe> 
+      </div>
+      
+    </div>
+  
+  </div>
+</div>
+</div>
+<div id="contact" style="height: auto;width:100%; background:rgb(223, 68, 153);overflow-x: hidden">
+  <canvas id="canvas" style="background:#000;"  style="width:100%;overflow-x: hidden"></canvas>
+</div>
+</body>
+<script>
+  document.getElementById("xyz").addEventListener("click", function topFunction() {
+    document.getElementById("pqr").classList.toggle("active");
+})
+document.getElementById("pqrs").addEventListener("click", function(){
+  document.getElementById("pqr").classList.toggle("active");
+})
+
+var rt = document.getElementById("pqr");
+var r = rt.getElementsByTagName("li");
+for(var i=0; i<r.length;i++){
+  r[i].addEventListener("click", function(){
+    document.getElementById("pqr").classList.toggle("active");
+  })
+}
+window.onscroll = function() {
+  if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+    document.getElementById("goTop").style.display = "block";
+  } else {
+    document.getElementById("goTop").style.display = "none";
+  }
+};
+
+document.getElementById("goTop").addEventListener("click", function(){
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+})
+
+var n = -1;
+showSlidesNext();
+
+setInterval(showSlidesNext,5000);
+
+function showSlidesNext() {
+  var i; n++;
+  var x = document.getElementsByClassName("mySlides1");
+  
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";  
+  }
+  if(n==x.length){n=0;}
+  x[n].style.display = "block";
+  
+}
+
+function showSlidesPrev(){
+	n--;
+    var i;
+  var x = document.getElementsByClassName("mySlides1");
+  
+  
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";  
+  }
+  if(n<0){n=x.length-1;}
+  console.log(n);
+  x[n].style.display = "block";
+  
+}
+window.onload = function () {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+//To do list
+
+//Create a "close" button and append it to each list item
+var idAbout = document.getElementById("about");
+var myNodelist = idAbout.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+// Click on a close button to hide the current list item
+var idAbout = document.getElementById("about");
+var close = idAbout.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+// Add a "checked" symbol when clicking on a list item
+// var list = document.querySelector('ul');
+// list.addEventListener('click', function(ev) {
+//   if (ev.target.tagName === 'LI') {
+//     ev.target.classList.toggle('checked');
+//   }
+// }, false);
+
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+
+//services
+
+
+   
+// Get the modal
+var modal = document.getElementById("myModal"); 
+
+// Get the button that opens the modal
+var btn = document.getElementsByClassName("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("closeModal")[0];
+
+// When the user clicks the button, open the modal
+for(var i=0;i<btn.length;i++){ 
+btn[i].onclick = function(event) {
+  event.preventDefault(); 
+	var r = this.href;
+  modal.style.display = "block";
+   document.getElementById("frame").setAttribute("src", r);
+}
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+
+  if (event.target == modal) {
+    modal.style.display = "none";
+   
+  }
+}
+
+//canvas...........................................................................................................................
+
+var canvas = document.getElementById('canvas');
+    c = canvas.getContext('2d');
+
+var innerWidth = window.innerWidth,
+    innerHeight = window.innerHeight,
+	TWO_PI = Math.PI * 2,
+	circleArray = [],
+	NumOfCircles = 100;
+
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+// Create multi color circles
+var colorArray = [
+  'red',
+	'green',
+	'yellow',
+	'blue',
+	'white'
+];
+
+// Function for creating circle
+function Circle(x,y,dx,dy,radius){
+
+   this.x = x;
+   this.y = y;
+   this.dx = dx;
+   this.dy = dy;
+   this.color = colorArray[Math.floor(Math.random() * colorArray.length)];
+   this.radius = radius;
+   console.log(this.color.length);
+   // Create function for animte circle
+   this.add = function(){ alert("add")}
+   this.update = function(){
+      if(this.x + this.radius > innerWidth || this.x - this.radius < 0){
+         this.dx = -this.dx;
+	  }	
+
+      if(this.y + this.radius > innerHeight || this.y - this.radius < 0){
+         this.dy = -this.dy;
+	  }
+
+      this.x += this.dx;
+      this.y += this.dy;
+
+      this.draw();	  
+   }
+   
+   // Create function for draw circle 
+   this.draw = function(){
+       c.beginPath();
+	   c.arc(this.x, this.y, this.radius, TWO_PI, false);
+	   c.fillStyle = this.color;
+	   c.fill();
+	   c.closePath();
+   }
+
+}
+
+                                
+// Run Circle function for creating new circle
+// Create multiple circles
+for (var i=0; i < NumOfCircles; i++){
+	var radius = (Math.random() * 30) +1; // Random circle size
+	var x = Math.random() * (innerWidth - radius*2) + radius; // Random X Position
+	var y = Math.random() * (innerHeight - radius*2) + radius; // Random Y position
+	var dx = (Math.random() - 0.5) * 2; // Random X velocity
+	var dy = (Math.random() - 0.5) * 2; // Random Y velocity
+	circleArray.push(new Circle(x,y,dx,dy,radius)); // Create new circle
+}
+
+
+// Function for animte canvas elements
+function animate(){
+ 
+   requestAnimationFrame(animate);
+   c.clearRect(0,0,innerWidth,innerHeight);
+   
+   for(var i=0; i<circleArray.length; i++){
+      circleArray[i].update();
+   }
+}
+
+animate(); 
+//circleArray[0].add();
+  </script>
+</html>
